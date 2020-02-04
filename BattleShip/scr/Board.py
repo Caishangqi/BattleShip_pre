@@ -3,7 +3,7 @@ from typing import *
 
 class Board(object):
     def __init__(self, num_rows: int, num_cols: int, blank_char: str = "*") -> None:
-        self.grid = [[blank_char for col in range(num_cols)] for row in range(num_rows)]
+        self.grid = [[blank_char for col in range(num_cols+1)] for row in range(num_rows+1)]
         self.blank_char = blank_char
 
     @property
