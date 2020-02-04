@@ -5,10 +5,10 @@ from .Ship import Ship
 
 
 class Game(object):
-    def __init__(self, dimension: List[int],ships: List, blank_char: str = "*") -> None:
+    def __init__(self, dimension: List[int], ships: List, blank_char: str = "*") -> None:
         self.blank_char = blank_char
         # this dimension[0] is row number dimension[1] is col number.
-        self.board = [].append(Board(dimension[0], dimension[1], blank_char) for i in range(2))
+        self.board = [Board(dimension[0], dimension[1], blank_char) for i in range(2)]
         self.ships = [].append(ships)
         # Board[0] is player 1's Board[1] is player 2's
         self.players = []
