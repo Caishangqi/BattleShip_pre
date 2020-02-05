@@ -13,9 +13,13 @@ class Game(object):
         self.ships = ships
         # Board[0] is player 1's Board[1] is player 2's
         self.players = []
+        for player_num in range(2):
+            self.players.append(Player(self.players))
         self._cur_player_turn = 0
 
     def play(self) -> None:
+        self.players[0].place_ships()
+        self.players[1].place_ships()
         while not self.is_game_over():
             self.display_game_state()
             self.cur_player.take_turn(self.board)
