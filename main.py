@@ -16,5 +16,4 @@ if __name__ == '__main__':
         ships_in_list.append((index[0], int(element)))
     # Game need input dimension and list of ships
     game1 = Game(dimension, ships_in_list)
-    game1.play()   # Test
-    print(game1.boards)
+    game1.play()  # Test

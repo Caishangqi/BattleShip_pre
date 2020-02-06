@@ -3,6 +3,11 @@ from .Attack import Attack
 from .Board import Board
 
 
+def place_ships():
+
+    print("you have total")
+
+
 class Player(object):
     def __init__(self, other_players: Iterable["Player"]):
         self.name = self.get_name_from_player(other_players)
