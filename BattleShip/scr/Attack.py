@@ -1,5 +1,6 @@
 from . import Player
 from . import Board
+from . import Ship
 
 Board = Board.Board
 
@@ -42,4 +43,6 @@ class Attack(object):
         elif the_board.grid[self.row][self.col] == "X" or "0":
             raise (f"You can't attack at {self.row}, {self.col} because you have already attak there")
         elif the_board.grid[self.row][self.col].isalpha() == True and the_board.grid[self.row][self.col] != "X":
-            the_board.grid[self.row][self.col] = self.maker.piece
+            the_board.grid[self.row][self.col] = "X"
+            return Ship.Ship.boat_name #查找覆盖点在对应名字返回它
+        else:the_board.grid[self.row][self.col] = "O"
