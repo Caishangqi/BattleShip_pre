@@ -7,8 +7,9 @@ class Game(object):
     def __init__(self, dimension: List[int], ships: List[Tuple[str, int]], blank_char: str = "*") -> None:
         self.blank_char = blank_char
         # this dimension[0] is row number dimension[1] is col number.
-        self.board = Board(dimension[0], dimension[1], blank_char)
-        self.boards = [self.board.grid for i in range(2)]
+        self.board1=Board(dimension[0], dimension[1], blank_char)
+        self.board2=Board(dimension[0], dimension[1], blank_char)
+        self.boards = [self.board1, self.board2]
         self.ships = ships
         # Board[0] is player 1's Board[1] is player 2's
         self._cur_player_turn = 0
@@ -19,9 +20,11 @@ class Game(object):
             self.player = Player(self.players)
             self.players.append(self.player.name)
             if player_num==0:
-                self.player.place_ships1(self.ships, self.boards)
+                self.player.place_ships(self.ships, self.boards[0].grid)
+                self.ships1=self.player.ships
             elif player_num==1:
-                self.player.place_ships2(self.ships, self.boards)
+                self.player.place_ships(self.ships, self.boards[1].grid)
+                self.ships2=self.player.ships
         while not self.is_game_over():
             self.display_game_state()
             self.cur_player.take_turn(self.board)
@@ -31,7 +34,8 @@ class Game(object):
         self.display_the_winner()
 
     def display_game_state(self) -> None:
-        print(self.board)
+        print(self.boards[self._cur_player_turn])
+
 
     def is_game_over(self):
         return self.someone_won()
