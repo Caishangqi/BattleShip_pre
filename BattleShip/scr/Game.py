@@ -1,7 +1,6 @@
 from typing import *
 from .Board import Board
 from .Player import Player
-from .Ship import Ship
 
 
 class Game(object):
@@ -12,14 +11,17 @@ class Game(object):
         self.boards = [self.board.grid for i in range(2)]
         self.ships = ships
         # Board[0] is player 1's Board[1] is player 2's
-        self.players = []
-        for player_num in range(2):
-            self.players.append(Player(self.players))
         self._cur_player_turn = 0
 
     def play(self) -> None:
-        self.players[0].place_ships()
-        self.players[1].place_ships()
+        self.players = []
+        for player_num in range(2):
+            self.player = Player(self.players)
+            self.players.append(self.player.name)
+            if player_num==0:
+                self.player.place_ships1(self.ships, self.boards)
+            elif player_num==1:
+                self.player.place_ships2(self.ships, self.boards)
         while not self.is_game_over():
             self.display_game_state()
             self.cur_player.take_turn(self.board)
