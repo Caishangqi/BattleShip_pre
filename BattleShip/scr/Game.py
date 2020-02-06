@@ -53,20 +53,5 @@ class Game(object):
         if self.someone_won():
             print(f'{self.cur_player} won the game!')
 
-    def check_ship_valid(self)->bool:
-        if orientation_overlapped() == False:
-            if ship_direction == "h":
-                if ship_horizontal_valid() == True:
-                    return True
-                else: return False
-            if ship_direction == "v":
-                if ship_vertical_valid() == True:
-                    return True
-                else:return False
-        else: return False
-
-    def orientation_overlapped(self)->bool:
-        if col_give_by_player < Board.num_cols and reo_give_by_player < Board.num_rows:
-            if self.players[self._cur_player_turn].
 
 
