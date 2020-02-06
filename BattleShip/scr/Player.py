@@ -100,13 +100,13 @@ class Player(object):
             return True
 
     def ship_horizontal_valid(self, ship: Tuple[str, int], boards: List[List[List[str]]]) -> bool:
-        for hrz in range(ship[1]):
+        for hrz in range(ship[1][0]):
             if (int(self.x) + hrz) > (len(boards[0][0]) - 1) or boards[self._cur_player_turn][int(self.y)][int(self.x) + hrz].isalpha() == True:
                 return False
         return True
 
     def ship_vertical_valid(self, ship: Tuple[str, int], boards: List[List[List[str]]]) -> bool:
-        for vet in range(ship[1]):
+        for vet in range(ship[1][0]):
             if (int(self.y) + vet) > (len(boards[0]) - 1) or boards[self._cur_player_turn][int(self.y) + vet][int(self.x)].isalpha() == True:
                 return False
         return True
